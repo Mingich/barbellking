@@ -11,6 +11,9 @@
       --sub-color: #6e6e6e;
       --bg-color: #ffffff;
       --accent-color: #007aff;
+      --dark-bg: #121212;
+      --dark-text: #e0e0e0;
+      --dark-sub: #888;
     }
 
     body {
@@ -18,13 +21,18 @@
       font-family: var(--font);
       background: var(--bg-color);
       color: var(--text-color);
-      line-height: 1.6;
-      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--dark-text);
     }
 
     header {
       text-align: center;
       padding: 60px 20px 40px;
+      position: relative;
     }
 
     header h1 {
@@ -39,6 +47,28 @@
       margin-top: 10px;
     }
 
+    body.dark-mode header p {
+      color: var(--dark-sub);
+    }
+
+    .toggle-mode {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .toggle-mode:hover {
+      background: var(--accent-color);
+      color: white;
+    }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -51,7 +81,6 @@
 
     section h2 {
       font-size: 1.4rem;
-      font-weight: 500;
       border-bottom: 1px solid #eee;
       padding-bottom: 10px;
       margin-bottom: 30px;
@@ -60,10 +89,8 @@
     .profile {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       justify-content: center;
       gap: 40px;
-      margin-top: 40px;
     }
 
     .profile img {
@@ -72,11 +99,6 @@
       border-radius: 20px;
       object-fit: cover;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .profile img:hover {
-      transform: scale(1.03);
     }
 
     .intro {
@@ -89,18 +111,36 @@
       color: var(--sub-color);
     }
 
+    body.dark-mode .intro p {
+      color: var(--dark-sub);
+    }
+
+    .reservation {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .reservation a {
+      background: var(--accent-color);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+
+    .reservation a:hover {
+      background: #005fdb;
+    }
+
     .sns a {
       display: inline-block;
       margin-right: 15px;
       color: var(--accent-color);
       text-decoration: none;
       font-weight: 500;
-      font-size: 1rem;
-      transition: opacity 0.2s ease;
-    }
-
-    .sns a:hover {
-      opacity: 0.6;
     }
 
     .portfolio-item {
@@ -108,18 +148,12 @@
       padding: 20px;
       border-radius: 14px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease;
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-3px);
     }
 
     .portfolio-item h3 {
-      margin-top: 0;
-      cursor: pointer;
+      margin: 0;
       color: var(--accent-color);
+      cursor: pointer;
     }
 
     .portfolio-content {
@@ -133,53 +167,41 @@
       margin-top: 10px;
     }
 
-    .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .gallery-grid img {
-      width: calc(33.333% - 10px);
+    .gallery-slider {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
       border-radius: 12px;
+    }
+
+    .gallery-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-track img {
+      width: 100%;
+      flex-shrink: 0;
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
     }
 
-    .gallery-grid img:hover {
-      transform: scale(1.03);
+    .slider-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reservation {
-      text-align: center;
-      margin-top: 60px;
-    }
-
-    .reservation a {
-      background-color: var(--accent-color);
+    .slider-buttons button {
+      background-color: rgba(0,0,0,0.5);
       color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-      transition: background 0.3s ease;
-    }
-
-    .reservation a:hover {
-      background-color: #005fdb;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     footer {
@@ -197,10 +219,6 @@
         text-align: center;
       }
 
-      .gallery-grid img {
-        width: 100%;
-      }
-
       .sns a {
         display: block;
         margin-bottom: 10px;
@@ -213,11 +231,12 @@
   <header>
     <h1>조민기</h1>
     <p>퍼스널 트레이너 · 피트니스 컨설턴트</p>
+    <button class="toggle-mode" onclick="toggleDark()">🌙 다크모드</button>
   </header>
 
   <div class="container">
 
-    <section class="profile fade-in">
+    <section class="profile">
       <img src="프로필사진.jpg" alt="프로필 사진" />
       <div class="intro">
         <h2>About Me</h2>
@@ -225,53 +244,57 @@
       </div>
     </section>
 
-    <section class="contact fade-in">
-      <div class="reservation fade-in">
-  <a href="https://thread.link/yourlink" target="_blank">💬 상담 예약하기</a>
-</div>
+    <div class="reservation">
+      <a href="https://thread.link/yourlink" target="_blank">💬 상담 예약하기</a>
+    </div>
+
+    <section class="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:minfitness@email.com">minfitness@email.com</a></p>
-      <p>Phone: 010-1234-5678</p>
+      <p>Email: <a href="mailto:jkjk7053@gmail.com">jkjk7053@gmail.com</a></p>
+      <p>Phone: 010-2994-9004</p>
     </section>
 
-    <section class="sns fade-in">
+    <section class="sns">
       <h2>SNS</h2>
-      <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
-      <a href="https://youtube.com/@yourchannel" target="_blank">Thread</a>
+      <a href="https://www.instagram.com/_barbellking/" target="_blank">Instagram</a>
+      <a href="https://www.threads.com/@_barbellking" target="_blank">Thread</a>
     </section>
 
-    <section class="portfolio fade-in">
+    <section class="portfolio">
       <h2>Portfolio</h2>
-
       <div class="portfolio-item">
-        <h3 onclick="togglePortfolio(this)">[성공 사례] 체지방 30% → 16% 감량</h3>
+        <h3 onclick="togglePortfolio(this)">[성공 사례] 단기 다이어트로 체지방률 7.3% 감량</h3>
         <div class="portfolio-content">
-          <p>6개월 간의 맞춤 프로그램으로 고객의 체지방을 건강하게 감량했습니다.</p>
-          <img src="성공사례1.jpg" alt="성공 사례 이미지 1" />
+          <p>2개월도 되지 않아 체지방률 7.3% 감량하신 회원님 비포 애프터 모습</p>
+          <img src="성공사례1.jpg" alt="성공 사례 1" />
         </div>
       </div>
-
       <div class="portfolio-item">
-        <h3 onclick="togglePortfolio(this)">[바디프로필 완성 프로젝트]</h3>
+        <h3 onclick="togglePortfolio(this)">[바디프로필 프로젝트]</h3>
         <div class="portfolio-content">
-          <p>3개월 루틴과 촬영 전 피크업 전략으로 고객의 바디프로필을 완성했습니다.</p>
-          <img src="성공사례2.jpg" alt="성공 사례 이미지 2" />
+          <p>1개월간 집중 운동프로그램 티칭 후 5개월만에 바디프로필 촬영 완료!</p>
+          <img src="성공사례2.jpg" alt="성공 사례 2" />
         </div>
       </div>
     </section>
 
-    <section class="gallery fade-in">
+    <section class="gallery">
       <h2>회원님들 후기</h2>
-      <div class="gallery-grid">
-        <img src="후기1.jpg" alt="후기 1">
-        <img src="후기2.jpg" alt="후기 2">
-        <img src="후기3.jpg" alt="후기 3">
-        <!-- 사진 계속 추가 가능 -->
+      <div class="gallery-slider">
+        <div class="gallery-track" id="galleryTrack">
+          <img src="후기1.jpg" alt="후기1" />
+          <img src="후기2.jpg" alt="후기2" />
+          <img src="후기3.jpg" alt="후기3" />
+        </div>
+        <div class="slider-buttons">
+          <button onclick="slideGallery(-1)">←</button>
+          <button onclick="slideGallery(1)">→</button>
+        </div>
       </div>
     </section>
 
-    <div class="reservation fade-in">
-      <a href="https://open.kakao.com/o/yourlink" target="_blank">💬 상담 예약하기</a>
+    <div class="reservation">
+      <a href="https://thread.link/yourlink" target="_blank">💬 상담 예약하기</a>
     </div>
 
   </div>
@@ -281,23 +304,24 @@
   </footer>
 
   <script>
-    // 스크롤 애니메이션
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, {
-      threshold: 0.2
-    });
-    fadeEls.forEach(el => observer.observe(el));
+    // 다크모드 토글
+    function toggleDark() {
+      document.body.classList.toggle('dark-mode');
+    }
 
-    // 포트폴리오 열고 닫기
+    // 포트폴리오 토글
     function togglePortfolio(el) {
       const content = el.nextElementSibling;
       content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // 후기 슬라이드
+    let currentSlide = 0;
+    function slideGallery(dir) {
+      const track = document.getElementById('galleryTrack');
+      const total = track.children.length;
+      currentSlide = (currentSlide + dir + total) % total;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
   </script>
 
