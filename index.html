@@ -2,104 +2,174 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>조민기 | 퍼스널 트레이너</title>
   <style>
     :root {
-      --main-color: #1f2937;
-      --accent-color: #2563eb;
-      --bg-color: #f9fafb;
-      --text-color: #333;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      --text-color: #1a1a1a;
+      --sub-color: #6e6e6e;
+      --bg-color: #ffffff;
+      --accent-color: #007aff;
     }
 
     body {
       margin: 0;
-      font-family: 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
+      font-family: var(--font);
+      background: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     header {
-      background-color: var(--main-color);
-      color: white;
-      padding: 40px 20px;
       text-align: center;
+      padding: 60px 20px 40px;
     }
 
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin: 0;
     }
 
     header p {
+      color: var(--sub-color);
       font-size: 1.1rem;
-      color: #d1d5db;
+      margin-top: 10px;
     }
 
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 30px 20px;
+      padding: 0 20px 60px;
+    }
+
+    section {
+      margin-top: 60px;
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
     }
 
     .profile {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 30px;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
     }
 
     .profile img {
       width: 180px;
       height: 180px;
-      border-radius: 10px;
+      border-radius: 20px;
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.03);
     }
 
     .intro {
       flex: 1;
       min-width: 250px;
+      max-width: 500px;
     }
 
-    .intro h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-    }
-
-    .contact, .sns, .portfolio {
-      margin-top: 50px;
+    .intro p {
+      color: var(--sub-color);
     }
 
     .sns a {
       display: inline-block;
       margin-right: 15px;
-      margin-bottom: 10px;
-      text-decoration: none;
       color: var(--accent-color);
-      font-weight: 600;
-      transition: color 0.3s;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: opacity 0.2s ease;
     }
 
     .sns a:hover {
-      color: #1d4ed8;
+      opacity: 0.6;
     }
 
     .portfolio-item {
-      background: white;
+      background: #f9f9f9;
       padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .portfolio-item h3 {
+      margin-top: 0;
+      cursor: pointer;
+      color: var(--accent-color);
+    }
+
+    .portfolio-content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .portfolio-content img {
+      width: 100%;
       border-radius: 10px;
-      margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      margin-top: 10px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reservation {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .reservation a {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+    }
+
+    .reservation a:hover {
+      background-color: #005fdb;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
       font-size: 0.9rem;
-      background-color: #e5e7eb;
-      color: #6b7280;
+      color: #aaa;
+      border-top: 1px solid #eee;
       margin-top: 60px;
     }
 
@@ -109,17 +179,9 @@
         text-align: center;
       }
 
-      .profile img {
-        margin-bottom: 20px;
-      }
-
-      .intro h2 {
-        font-size: 1.3rem;
-      }
-
       .sns a {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
     }
   </style>
@@ -128,47 +190,82 @@
 
   <header>
     <h1>조민기</h1>
-    <p>퍼스널 트레이너 | 피트니스 컨설턴트</p>
+    <p>퍼스널 트레이너 · 피트니스 컨설턴트</p>
   </header>
 
   <div class="container">
-    <section class="profile">
-      <img src="프로필사진.jpg" alt="프로필 사진">
+
+    <section class="profile fade-in">
+      <img src="프로필사진.jpg" alt="프로필 사진" />
       <div class="intro">
-        <h2>안녕하세요!</h2>
-        <p>저는 4년차 피트니스 전문가로, 운동 처방과 식단 설계에 특화된 퍼스널 트레이너입니다. 고객 맞춤형 접근으로 건강한 변화와 지속 가능한 결과를 만들어냅니다.</p>
+        <h2>About Me</h2>
+        <p>4년차 피트니스 전문가. 운동과 식단으로 건강하고 지속 가능한 변화를 만듭니다. 외적인 변화뿐 아니라 삶의 질까지 끌어올리는 것을 목표로 합니다.</p>
       </div>
     </section>
 
-    <section class="contact">
-      <h2>📞 연락처</h2>
+    <section class="contact fade-in">
+      <h2>Contact</h2>
       <p>Email: <a href="mailto:minfitness@email.com">minfitness@email.com</a></p>
       <p>Phone: 010-1234-5678</p>
     </section>
 
-    <section class="sns">
-      <h2>📱 SNS</h2>
+    <section class="sns fade-in">
+      <h2>SNS</h2>
       <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
-      <a href="https://www.youtube.com/@yourchannel" target="_blank">YouTube</a>
+      <a href="https://youtube.com/@yourchannel" target="_blank">YouTube</a>
       <a href="https://open.kakao.com/o/yourlink" target="_blank">KakaoTalk</a>
     </section>
 
-    <section class="portfolio">
-      <h2>📂 포트폴리오</h2>
+    <section class="portfolio fade-in">
+      <h2>Portfolio</h2>
+
       <div class="portfolio-item">
-        <h3>[성공 사례] 체지방률 30% → 16% 감량</h3>
-        <p>6개월 간의 체계적인 운동 루틴과 식단관리로, 고객의 건강한 체중 감량을 성공적으로 도왔습니다.</p>
+        <h3 onclick="togglePortfolio(this)">[성공 사례] 체지방 30% → 16% 감량</h3>
+        <div class="portfolio-content">
+          <p>6개월 간의 맞춤 프로그램으로 고객의 체지방을 건강하게 감량했습니다.</p>
+          <img src="성공사례1.jpg" alt="성공 사례 이미지 1" />
+        </div>
       </div>
+
       <div class="portfolio-item">
-        <h3>[바디프로필 준비 프로그램]</h3>
-        <p>3개월 동안 촘촘한 보디빌딩 프로그램으로 바디프로필 촬영까지 완성도 있게 도와드렸습니다.</p>
+        <h3 onclick="togglePortfolio(this)">[바디프로필 완성 프로젝트]</h3>
+        <div class="portfolio-content">
+          <p>3개월 루틴과 촬영 전 피크업 전략으로 고객의 바디프로필을 완성했습니다.</p>
+          <img src="성공사례2.jpg" alt="성공 사례 이미지 2" />
+        </div>
       </div>
     </section>
+
+    <div class="reservation fade-in">
+      <a href="https://open.kakao.com/o/yourlink" target="_blank">💬 상담 예약하기</a>
+    </div>
   </div>
 
   <footer>
     &copy; 2025 조민기. All rights reserved.
   </footer>
+
+  <script>
+    // 스크롤 애니메이션
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // 아코디언 토글
+    function togglePortfolio(el) {
+      const content = el.nextElementSibling;
+      const isOpen = content.style.display === 'block';
+      content.style.display = isOpen ? 'none' : 'block';
+    }
+  </script>
 
 </body>
 </html>
