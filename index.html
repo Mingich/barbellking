@@ -13,19 +13,19 @@
       --accent-color: #007aff;
       --dark-bg: #121212;
       --dark-text: #e0e0e0;
-      --dark-sub: #888;
+      --dark-sub: #aaaaaa;
     }
 
     body {
       margin: 0;
       font-family: var(--font);
-      background: var(--bg-color);
+      background-color: var(--bg-color);
       color: var(--text-color);
       transition: background 0.3s, color 0.3s;
     }
 
     body.dark-mode {
-      background: var(--dark-bg);
+      background-color: var(--dark-bg);
       color: var(--dark-text);
     }
 
@@ -37,7 +37,6 @@
 
     header h1 {
       font-size: 2.8rem;
-      font-weight: 600;
       margin: 0;
     }
 
@@ -91,6 +90,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 40px;
+      text-align: center;
     }
 
     .profile img {
@@ -99,6 +99,7 @@
       border-radius: 20px;
       object-fit: cover;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      margin: 0 auto;
     }
 
     .intro {
@@ -183,6 +184,7 @@
       width: 100%;
       flex-shrink: 0;
       object-fit: cover;
+      cursor: zoom-in;
     }
 
     .slider-buttons {
@@ -213,10 +215,25 @@
       margin-top: 60px;
     }
 
+    #zoomModal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #zoomModal img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
     @media (max-width: 768px) {
       .profile {
         flex-direction: column;
-        text-align: center;
       }
 
       .sns a {
@@ -227,7 +244,6 @@
   </style>
 </head>
 <body>
-
   <header>
     <h1>조민기</h1>
     <p>퍼스널 트레이너 · 피트니스 컨설턴트</p>
@@ -235,12 +251,11 @@
   </header>
 
   <div class="container">
-
     <section class="profile">
       <img src="프로필사진.jpg" alt="프로필 사진" />
       <div class="intro">
         <h2>About Me</h2>
-        <p>4년차 피트니스 전문가. 운동과 식단으로 건강하고 지속 가능한 변화를 만듭니다. 외적인 변화뿐 아니라 삶의 질까지 끌어올리는 것을 목표로 합니다.</p>
+        <p>4년차 피트니스 전문가. 운동과 식단으로 건강하고 지속 가능한 변화를 만듭니다.</p>
       </div>
     </section>
 
@@ -282,9 +297,12 @@
       <h2>회원님들 후기</h2>
       <div class="gallery-slider">
         <div class="gallery-track" id="galleryTrack">
-          <img src="후기1.jpg" alt="후기1" />
-          <img src="후기2.jpg" alt="후기2" />
-          <img src="후기3.jpg" alt="후기3" />
+          <img src="후기1.jpg" onclick="zoomImage(this.src)" />
+          <img src="후기2.jpg" onclick="zoomImage(this.src)" />
+          <img src="후기3.jpg" onclick="zoomImage(this.src)" />
+          <img src="후기4.jpg" onclick="zoomImage(this.src)" />
+          <img src="후기5.jpg" onclick="zoomImage(this.src)" />
+          <img src="후기6.jpg" onclick="zoomImage(this.src)" />
         </div>
         <div class="slider-buttons">
           <button onclick="slideGallery(-1)">←</button>
@@ -296,7 +314,10 @@
     <div class="reservation">
       <a href="https://open.kakao.com/o/s9lArJEg" target="_blank">💬 상담 예약하기</a>
     </div>
+  </div>
 
+  <div id="zoomModal" onclick="closeZoom()">
+    <img id="zoomedImg" src="" alt="확대 이미지">
   </div>
 
   <footer>
@@ -304,26 +325,32 @@
   </footer>
 
   <script>
-    // 다크모드 토글
     function toggleDark() {
       document.body.classList.toggle('dark-mode');
     }
 
-    // 포트폴리오 토글
     function togglePortfolio(el) {
       const content = el.nextElementSibling;
       content.style.display = content.style.display === 'block' ? 'none' : 'block';
     }
 
-    // 후기 슬라이드
-    let currentSlide = 0;
     function slideGallery(dir) {
       const track = document.getElementById('galleryTrack');
       const total = track.children.length;
+      let currentSlide = parseInt(track.dataset.slide || 0);
       currentSlide = (currentSlide + dir + total) % total;
+      track.dataset.slide = currentSlide;
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
-  </script>
 
+    function zoomImage(src) {
+      document.getElementById("zoomedImg").src = src;
+      document.getElementById("zoomModal").style.display = "flex";
+    }
+
+    function closeZoom() {
+      document.getElementById("zoomModal").style.display = "none";
+    }
+  </script>
 </body>
 </html>
