@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>조민기 | 퍼스널 트레이너</title>
+  <style>
+    :root {
+      --main-color: #1f2937;
+      --accent-color: #2563eb;
+      --bg-color: #f9fafb;
+      --text-color: #333;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #d1d5db;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .profile {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .profile img {
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .intro {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .intro h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+
+    .contact, .sns, .portfolio {
+      margin-top: 50px;
+    }
+
+    .sns a {
+      display: inline-block;
+      margin-right: 15px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: var(--accent-color);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .sns a:hover {
+      color: #1d4ed8;
+    }
+
+    .portfolio-item {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      background-color: #e5e7eb;
+      color: #6b7280;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .profile {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile img {
+        margin-bottom: 20px;
+      }
+
+      .intro h2 {
+        font-size: 1.3rem;
+      }
+
+      .sns a {
+        display: block;
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>조민기</h1>
+    <p>퍼스널 트레이너 | 피트니스 컨설턴트</p>
+  </header>
+
+  <div class="container">
+    <section class="profile">
+      <img src="프로필사진.jpg" alt="프로필 사진">
+      <div class="intro">
+        <h2>안녕하세요!</h2>
+        <p>저는 4년차 피트니스 전문가로, 운동 처방과 식단 설계에 특화된 퍼스널 트레이너입니다. 고객 맞춤형 접근으로 건강한 변화와 지속 가능한 결과를 만들어냅니다.</p>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>📞 연락처</h2>
+      <p>Email: <a href="mailto:minfitness@email.com">minfitness@email.com</a></p>
+      <p>Phone: 010-1234-5678</p>
+    </section>
+
+    <section class="sns">
+      <h2>📱 SNS</h2>
+      <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/@yourchannel" target="_blank">YouTube</a>
+      <a href="https://open.kakao.com/o/yourlink" target="_blank">KakaoTalk</a>
+    </section>
+
+    <section class="portfolio">
+      <h2>📂 포트폴리오</h2>
+      <div class="portfolio-item">
+        <h3>[성공 사례] 체지방률 30% → 16% 감량</h3>
+        <p>6개월 간의 체계적인 운동 루틴과 식단관리로, 고객의 건강한 체중 감량을 성공적으로 도왔습니다.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>[바디프로필 준비 프로그램]</h3>
+        <p>3개월 동안 촘촘한 보디빌딩 프로그램으로 바디프로필 촬영까지 완성도 있게 도와드렸습니다.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 조민기. All rights reserved.
+  </footer>
+
+</body>
+</html>
