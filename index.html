@@ -6,14 +6,20 @@
   <title>조민기 | 퍼스널 트레이너</title>
   <style>
     :root {
-      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      --text-color: #1a1a1a;
-      --sub-color: #6e6e6e;
+      --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", sans-serif;
+      --text-color: #1c1c1e;
+      --sub-color: #6e6e73;
       --bg-color: #ffffff;
       --accent-color: #007aff;
-      --dark-bg: #121212;
-      --dark-text: #e0e0e0;
-      --dark-sub: #aaaaaa;
+      --dark-bg: #000000;
+      --dark-text: #f2f2f7;
+      --dark-sub: #a1a1a6;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
@@ -21,7 +27,7 @@
       font-family: var(--font);
       background-color: var(--bg-color);
       color: var(--text-color);
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     body.dark-mode {
@@ -30,6 +36,7 @@
     }
 
     body.dark-mode a,
+    body.dark-mode h1,
     body.dark-mode h2,
     body.dark-mode h3,
     body.dark-mode p {
@@ -38,19 +45,21 @@
 
     header {
       text-align: center;
-      padding: 60px 20px 40px;
+      padding: 80px 20px 40px;
       position: relative;
     }
 
     header h1 {
       font-size: 2.8rem;
       margin: 0;
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
 
     header p {
       color: var(--sub-color);
       font-size: 1.1rem;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     body.dark-mode header p {
@@ -62,12 +71,14 @@
       top: 20px;
       right: 20px;
       background: none;
-      border: 2px solid var(--accent-color);
+      border: 1px solid var(--accent-color);
       color: var(--accent-color);
-      border-radius: 20px;
-      padding: 6px 14px;
+      border-radius: 22px;
+      padding: 6px 16px;
       font-size: 0.9rem;
+      font-weight: 500;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .toggle-mode:hover {
@@ -76,20 +87,22 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 0 20px 60px;
+      padding: 0 24px 80px;
     }
 
     section {
-      margin-top: 60px;
+      margin-top: 80px;
     }
 
     section h2 {
-      font-size: 1.4rem;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 10px;
-      margin-bottom: 30px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #e5e5ea;
+      padding-bottom: 12px;
     }
 
     .profile {
@@ -101,22 +114,24 @@
     }
 
     .profile img {
-      width: 180px;
-      height: 180px;
-      border-radius: 20px;
+      width: 200px;
+      height: 200px;
+      border-radius: 24px;
       object-fit: cover;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
       margin: 0 auto;
     }
 
     .intro {
       flex: 1;
-      min-width: 250px;
-      max-width: 500px;
+      min-width: 260px;
+      max-width: 520px;
     }
 
     .intro p {
       color: var(--sub-color);
+      font-size: 1.05rem;
+      line-height: 1.6;
     }
 
     body.dark-mode .intro p {
@@ -125,18 +140,18 @@
 
     .reservation {
       text-align: center;
-      margin: 40px 0;
+      margin: 60px 0;
     }
 
     .reservation a {
       background: var(--accent-color);
       color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
+      padding: 14px 32px;
+      border-radius: 28px;
       text-decoration: none;
       font-weight: 500;
       font-size: 1.1rem;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
 
     .reservation a:hover {
@@ -145,34 +160,36 @@
 
     .sns a {
       display: inline-block;
-      margin-right: 15px;
+      margin-right: 20px;
       color: var(--accent-color);
       text-decoration: none;
       font-weight: 500;
+      font-size: 1rem;
     }
 
     .portfolio-item {
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 14px;
-      margin-bottom: 20px;
+      background: #f5f5f7;
+      padding: 24px;
+      border-radius: 18px;
+      margin-bottom: 24px;
     }
 
     .portfolio-item h3 {
       margin: 0;
       color: var(--accent-color);
+      font-size: 1.1rem;
       cursor: pointer;
     }
 
     .portfolio-content {
       display: none;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .portfolio-content img {
       width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
+      border-radius: 12px;
+      margin-top: 12px;
     }
 
     .gallery-slider {
@@ -213,15 +230,6 @@
       cursor: pointer;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
-      color: #aaa;
-      border-top: 1px solid #eee;
-      margin-top: 60px;
-    }
-
     #zoomModal {
       display: none;
       position: fixed;
@@ -236,6 +244,15 @@
     #zoomModal img {
       max-width: 90%;
       max-height: 90%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9rem;
+      color: #aaa;
+      border-top: 1px solid #eee;
+      margin-top: 80px;
     }
 
     @media (max-width: 768px) {
@@ -262,12 +279,12 @@
       <img src="프로필사진.jpg" alt="프로필 사진" />
       <div class="intro">
         <h2>About Me</h2>
-        <p>4년차 피트니스 전문가. 운동과 식단으로 건강하고 지속 가능한 변화를 만듭니다.</p>
+        <p>4년차 피트니스 전문가. 운동과 식단으로 건강하고 지속 가능한 변화를 만듭니다. 삶의 질을 함께 바꾸는 운동을 추구합니다.</p>
       </div>
     </section>
 
     <div class="reservation">
-      <a href="https://open.kakao.com/o/s9lArJEg" target="_blank">💬 상담 바로가기기</a>
+      <a href="https://open.kakao.com/o/s9lArJEg" target="_blank">💬 상담 바로가기</a>
     </div>
 
     <section class="contact">
@@ -291,19 +308,12 @@
           <img src="성공사례1.jpg" alt="성공 사례 1" />
         </div>
       </div>
-      <div class="portfolio-item">
-        <h3 onclick="togglePortfolio(this)">[바디프로필 프로젝트]</h3>
-        <div class="portfolio-content">
-          <p>1개월간 집중 운동프로그램 티칭 및 식단관리 후 5개월만에 바디프로필 촬영 완료!</p>
-          <img src="성공사례2.jpg" alt="성공 사례 2" />
-        </div>
-      </div>
     </section>
 
     <section class="gallery">
       <h2>회원님들 후기</h2>
       <div class="gallery-slider">
-        <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-track" id="galleryTrack" data-slide="0">
           <img src="후기1.jpg" onclick="zoomImage(this.src)" />
           <img src="후기2.jpg" onclick="zoomImage(this.src)" />
           <img src="후기3.jpg" onclick="zoomImage(this.src)" />
