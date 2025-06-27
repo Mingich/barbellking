@@ -133,6 +133,24 @@
       margin-top: 10px;
     }
 
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .gallery-grid img {
+      width: calc(33.333% - 10px);
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -179,6 +197,10 @@
         text-align: center;
       }
 
+      .gallery-grid img {
+        width: 100%;
+      }
+
       .sns a {
         display: block;
         margin-bottom: 10px;
@@ -205,14 +227,14 @@
 
     <section class="contact fade-in">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:zzangmingi@gmail.com">zzangmingi@gmail.com</a></p>
-      <p>Phone: 010-2994-9004</p>
+      <p>Email: <a href="mailto:minfitness@email.com">minfitness@email.com</a></p>
+      <p>Phone: 010-1234-5678</p>
     </section>
 
     <section class="sns fade-in">
       <h2>SNS</h2>
-      <a href="https://instagram.com/_barbellking/" target="_blank">Instagram</a>
-      <a href="https://threads.com/@_barbellking" target="_blank">Thread</a>
+      <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+      <a href="https://youtube.com/@yourchannel" target="_blank">Thread</a>
     </section>
 
     <section class="portfolio fade-in">
@@ -235,9 +257,20 @@
       </div>
     </section>
 
+    <section class="gallery fade-in">
+      <h2>회원님들 후기</h2>
+      <div class="gallery-grid">
+        <img src="후기1.jpg" alt="후기 1">
+        <img src="후기2.jpg" alt="후기 2">
+        <img src="후기3.jpg" alt="후기 3">
+        <!-- 사진 계속 추가 가능 -->
+      </div>
+    </section>
+
     <div class="reservation fade-in">
-      <a href="https://open.kakao.com/o/s9lArJEg" target="_blank">💬 상담 예약하기</a>
+      <a href="https://open.kakao.com/o/yourlink" target="_blank">💬 상담 예약하기</a>
     </div>
+
   </div>
 
   <footer>
@@ -258,11 +291,10 @@
     });
     fadeEls.forEach(el => observer.observe(el));
 
-    // 아코디언 토글
+    // 포트폴리오 열고 닫기
     function togglePortfolio(el) {
       const content = el.nextElementSibling;
-      const isOpen = content.style.display === 'block';
-      content.style.display = isOpen ? 'none' : 'block';
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 
